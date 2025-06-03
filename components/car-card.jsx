@@ -59,7 +59,7 @@ export const CarCard = ({ car }) => {
   };
 
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition group">
+    <Card className="overflow-hidden hover:shadow-lg transition group py-0">
       <div className="relative h-48">
         {car.images && car.images.length > 0 ? (
           <div className="relative w-full h-full">
