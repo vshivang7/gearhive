@@ -6,6 +6,7 @@ const isProtectedRoute = createRouteMatcher(["/admin(.*)",
 ]);
 
 export default clerkMiddleware(async (auth, req)=>{
+   console.log("Clerk middleware running for:", req.nextUrl.pathname);
     const {userId} = await auth();
     if(!userId && isProtectedRoute(req)){
         const {redirectToSignIn}=await auth();

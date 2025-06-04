@@ -8,7 +8,7 @@ const inter=Inter({
 });
 
 export const metadata = {
-  title: "WheelDeal",
+  title: "GearHive",
   description: "Find the best deals on wheels",
 };
 
