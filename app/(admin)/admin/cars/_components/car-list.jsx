@@ -11,7 +11,7 @@ const CarsList = () => {
 
     const router = useRouter();
 
-    const handleSearchSubmit = () => {
+    const handleSearchSubmit = (e) => {
         e.preventDefault();
         //api call to search cars
     };
