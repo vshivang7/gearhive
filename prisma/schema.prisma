@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -15,22 +9,17 @@ datasource db {
 }
 
 model User {
-  id            String             @id @default(uuid())
-  clerkUserId   String             @unique // clerk user id
-  email         String             @unique
-  name          String?
-  imageUrl      String?
-  phone         String?
-  createdAt     DateTime           @default(now())
-  updatedAt     DateTime           @updatedAt
-  role          UserRole           @default(USER)
-  savedCars     UserSavedCar[]
-  testDrives    TestDriveBooking[]
-}
-
-enum UserRole {
-  USER
-  ADMIN
+  id          String             @id @default(uuid())
+  clerkUserId String             @unique
+  email       String             @unique
+  name        String?
+  imageUrl    String?
+  phone       String?
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+  role        UserRole           @default(USER)
+  testDrives  TestDriveBooking[]
+  savedCars   UserSavedCar[]
 }
 
 model Car {
@@ -48,11 +37,11 @@ model Car {
   description       String
   status            CarStatus          @default(AVAILABLE)
   featured          Boolean            @default(false)
-  images            String[]           // Array of Supabase storage URLs
-  savedBy           UserSavedCar[]
-  testDriveBookings TestDriveBooking[]
+  images            String[]
   createdAt         DateTime           @default(now())
   updatedAt         DateTime           @updatedAt
+  testDriveBookings TestDriveBooking[]
+  savedBy           UserSavedCar[]
 
   @@index([make, model])
   @@index([bodyType])
@@ -63,40 +52,76 @@ model Car {
   @@index([featured])
 }
 
-enum CarStatus {
-  AVAILABLE
-  UNAVAILABLE
-  SOLD
-}
-
-// Single dealership configuration, if you have multiple dealerships, you can remove default values.
 model DealershipInfo {
   id           String        @id @default(uuid())
   name         String        @default("Vehiql Motors")
-  address      String        @default("69 Car Street, Autoville, CA 69420") 
+  address      String        @default("69 Car Street, Autoville, CA 69420")
   phone        String        @default("+1 (555) 123-4567")
   email        String        @default("contact@vehiql.com")
-  workingHours WorkingHour[]
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
+  workingHours WorkingHour[]
 }
 
-// Working hours configuration
 model WorkingHour {
-  id             String       @id @default(uuid())
-  dealershipId   String
-  dealership     DealershipInfo   @relation(fields: [dealershipId], references: [id], onDelete: Cascade)
-  dayOfWeek      DayOfWeek
-  openTime       String       // Format: "HH:MM" (24-hour)
-  closeTime      String       // Format: "HH:MM" (24-hour)
-  isOpen         Boolean      @default(true)
-  createdAt      DateTime     @default(now())
-  updatedAt      DateTime     @updatedAt
+  id           String         @id @default(uuid())
+  dealershipId String
+  dayOfWeek    DayOfWeek
+  openTime     String
+  closeTime    String
+  isOpen       Boolean        @default(true)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  dealership   DealershipInfo @relation(fields: [dealershipId], references: [id], onDelete: Cascade)
 
   @@unique([dealershipId, dayOfWeek])
   @@index([dealershipId])
   @@index([dayOfWeek])
   @@index([isOpen])
+}
+
+model UserSavedCar {
+  id      String   @id @default(uuid())
+  userId  String
+  carId   String
+  savedAt DateTime @default(now())
+  car     Car      @relation(fields: [carId], references: [id], onDelete: Cascade)
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, carId])
+  @@index([userId])
+  @@index([carId])
+}
+
+model TestDriveBooking {
+  id          String        @id @default(uuid())
+  carId       String
+  userId      String
+  bookingDate DateTime      @db.Date
+  startTime   String
+  endTime     String
+  status      BookingStatus @default(PENDING)
+  notes       String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  car         Car           @relation(fields: [carId], references: [id])
+  user        User          @relation(fields: [userId], references: [id])
+
+  @@index([carId])
+  @@index([userId])
+  @@index([bookingDate])
+  @@index([status])
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum CarStatus {
+  AVAILABLE
+  UNAVAILABLE
+  SOLD
 }
 
 enum DayOfWeek {
@@ -107,39 +132,6 @@ enum DayOfWeek {
   FRIDAY
   SATURDAY
   SUNDAY
-}
-
-model UserSavedCar {
-  id        String   @id @default(uuid())
-  userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  carId     String
-  car       Car      @relation(fields: [carId], references: [id], onDelete: Cascade)
-  savedAt   DateTime @default(now())
-
-  @@unique([userId, carId])
-  @@index([userId])
-  @@index([carId])
-}
-
-model TestDriveBooking {
-  id            String        @id @default(uuid())
-  carId         String
-  car           Car           @relation(fields: [carId], references: [id])
-  userId        String
-  user          User          @relation(fields: [userId], references: [id])
-  bookingDate   DateTime      @db.Date
-  startTime     String        // Format: "HH:MM" (24-hour)
-  endTime       String        // Format: "HH:MM" (24-hour)
-  status        BookingStatus @default(PENDING)
-  notes         String?
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
-
-  @@index([carId])
-  @@index([userId])
-  @@index([bookingDate])
-  @@index([status])
 }
 
 enum BookingStatus {

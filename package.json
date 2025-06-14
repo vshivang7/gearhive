@@ -29,7 +29,7 @@
     "@tailwindcss/vite": "^4.1.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "date-fns": "^4.1.0",
+    "date-fns": "^2.30.0",
     "generate": "^0.14.0",
     "lucide-react": "^0.483.0",
     "next": "15.2.3",
