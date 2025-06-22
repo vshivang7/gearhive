@@ -10,6 +10,7 @@ function serializeCarData(car) {
   return {
     ...car,
     price: car.price ? parseFloat(car.price.toString()) : 0,
+    mileage: car.mileage ? parseFloat(car.mileage.toString()) : 0,
     createdAt: car.createdAt?.toISOString(),
     updatedAt: car.updatedAt?.toISOString(),
   };
@@ -26,12 +27,13 @@ export async function getFeaturedCars(limit = 3) {
         status: "AVAILABLE",
       },
       take: limit,
-      orderBy: { createdAt: "desc" },
     });
 
+    // ✅ Serialize each car before returning
     return cars.map(serializeCarData);
   } catch (error) {
-    throw new Error("Error fetching featured cars:" + error.message);
+    console.error("Error fetching featured cars:", error);
+    return [];
   }
 }
 
@@ -47,12 +49,10 @@ async function fileToBase64(file) {
  */
 export async function processImageSearch(file) {
   try {
-    // Get request data for ArcJet
     const req = await request();
 
-    // Check rate limit
     const decision = await aj.protect(req, {
-      requested: 1, // Specify how many tokens to consume
+      requested: 1,
     });
 
     if (decision.isDenied()) {
@@ -72,19 +72,15 @@ export async function processImageSearch(file) {
       throw new Error("Request blocked");
     }
 
-    // Check if API key is available
     if (!process.env.GEMINI_API_KEY) {
       throw new Error("Gemini API key is not configured");
     }
 
-    // Initialize Gemini API
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    // Convert image file to base64
     const base64Image = await fileToBase64(file);
 
-    // Create image part for the model
     const imagePart = {
       inlineData: {
         data: base64Image,
@@ -92,7 +88,6 @@ export async function processImageSearch(file) {
       },
     };
 
-    // Define the prompt for car search extraction
     const prompt = `
       Analyze this car image and extract the following information for a search query:
       1. Make (manufacturer)
@@ -111,17 +106,14 @@ export async function processImageSearch(file) {
       Only respond with the JSON object, nothing else.
     `;
 
-    // Get response from Gemini
     const result = await model.generateContent([imagePart, prompt]);
     const response = await result.response;
     const text = response.text();
     const cleanedText = text.replace(/```(?:json)?\n?/g, "").trim();
 
-    // Parse the JSON response
     try {
       const carDetails = JSON.parse(cleanedText);
 
-      // Return success response with data
       return {
         success: true,
         data: carDetails,
@@ -135,6 +127,6 @@ export async function processImageSearch(file) {
       };
     }
   } catch (error) {
-    throw new Error("AI Search error:" + error.message);
+    throw new Error("AI Search error: " + error.message);
   }
 }

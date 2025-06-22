@@ -130,7 +130,7 @@ export function HomeSearch() {
               className="cursor-pointer rounded-xl p-1.5"
               style={{
                 background: isImageSearchActive ? "black" : "",
-                color: isImageSearchActive ? "white" : "",
+                color: isImageSearchActive ? "white" : "black",
               }}
             />
           </div>
@@ -154,6 +154,7 @@ export function HomeSearch() {
                   />
                   <Button
                     variant="outline"
+                    className="bg-black text-white border-black hover:border-gray-900"
                     onClick={() => {
                       setSearchImage(null);
                       setImagePreview("");

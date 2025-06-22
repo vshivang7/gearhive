@@ -138,4 +138,33 @@
     @apply bg-gradient-to-br from-blue-500 to-green-500 font-extrabold tracking-tighter pr-2 pb-2 text-transparent bg-clip-text;
   }
 }
+.bg-gradient-ai {
+  background: linear-gradient(145deg, #1a1a2e, #0f0f1a);
+}
+
+.glow-border {
+  border: 1px solid rgba(0, 245, 255, 0.2);
+  box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+  backdrop-filter: blur(4px);
+}
+
+.glassmorphic {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(108, 99, 255, 0.2);
+  border-radius: 1rem;
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
 
