@@ -116,10 +116,10 @@ export function HomeSearch() {
           <Search className="absolute left-3 w-5 h-5" />
           <Input
             type="text"
-            placeholder="Enter make, model or use AI"
+            placeholder="Enter make, model, or use our AI Image Search..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="md:placeholder:content-['Enter make, model, or use our AI Image Search...'] pl-10 pr-12 py-6 w-full rounded-full border-gray-300 bg-white/95 backdrop-blur-sm"
+            className="pl-10 pr-12 py-6 w-full rounded-full border-gray-300 bg-white/95 backdrop-blur-sm"
           />
 
           {/* Image Search Button */}

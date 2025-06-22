@@ -1,9 +1,4 @@
 /** @type {import('next').NextConfig} */
-
-// Extract hostname from NEXT_PUBLIC_SUPABASE_URL
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const supabaseHostname = supabaseUrl.replace(/^https?:\/\//, "").replace(/\/$/, "");
-
 const nextConfig = {
   experimental: {
     serverComponentsHmrCache: false, // defaults to true
@@ -12,11 +7,8 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: supabaseHostname,
+        hostname: "npbxqtfcluouruunsttn.supabase.co",
       },
-    ],
-    domains: [
-      "media.architecturaldigest.com",
     ],
   },
 
