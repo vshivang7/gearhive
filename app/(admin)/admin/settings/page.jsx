@@ -1,7 +1,7 @@
 import { SettingsForm } from "./_components/settings-form";
 
 export const metadata = {
-  title: "Settings | Vehiql Admin",
+  title: "Settings | GearHive Admin",
   description: "Manage dealership working hours and admin users",
 };
 

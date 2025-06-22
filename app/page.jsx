@@ -24,7 +24,7 @@ export default async function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-8">
             <h1 className="text-5xl md:text-8xl mb-4 gradient-title">
-              Find your Dream Car with Vehiql AI
+              Find your Dream Car with GearHive AI
             </h1>
             <p className="text-xl text-gray-500 mb-8 max-w-2xl mx-auto">
               Advanced AI Car Search and test drive from thousands of vehicles.

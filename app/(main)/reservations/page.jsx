@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { ReservationsList } from "./_components/reservations-list.jsx";
 
 export const metadata = {
-  title: "My Reservations | Vehiql",
+  title: "My Reservations | GearHive",
   description: "Manage your test drive reservations",
 };
 
