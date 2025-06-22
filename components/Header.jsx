@@ -14,7 +14,7 @@ const Header = async ({isAdminPage=false}) => {
     <header className='fixed top-0 h-fit w-full bg-white backdrop-blur-md z-50 border-b text-black'>
         <nav className='mx-auto px-4 py-4 flex justify-between items-center'>
             <Link href={isAdminPage?"/admin" : "/"} className='flex'>
-                <Image src={"/logo.png"} alt="Throtl Logo" width={200} height={60} />
+                <Image src={"/gearhive_logo.png"} alt="GearHive Logo" width={140} height={60} />
                 {
                     isAdminPage&&(<span className='text-xs font-extralight'>admin</span>)
                 }

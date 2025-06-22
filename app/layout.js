@@ -27,14 +27,14 @@ export default function RootLayout({ children }) {
           <main className=" bg-gray-100 flex flex-col min-h-screen">
           {children}
           </main>
-          {/* footer */}
+          {/* footer
           <footer className="flex justify-center items-center h-16 bg-gray-800 text-white">
             <div className="container mx-auto px-4 text-center text-gray-200">
               <p>
               Ultimate car deals  
               </p>
             </div>
-          </footer>
+          </footer> */}
         </body>
       </html>
     </ClerkProvider>
