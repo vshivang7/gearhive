@@ -11,7 +11,7 @@ const Header = async ({isAdminPage=false}) => {
 
     const isAdmin = user?.role === 'ADMIN';
   return (
-    <header className='fixed top-0 h-20 w-full bg-emerald-800 z-50 border-b text-black'>
+    <header className='fixed top-0 h-20 w-full bg-gradient-to-b from-emerald-700 to-green-200 z-50 border-b text-black'>
         <nav className='mx-auto px-4 py-4 flex justify-between items-center'>
             <Link href={isAdminPage?"/admin" : "/"} className='flex'>
                 <Image src={"/gearhive_logo.png"} alt="GearHive Logo" width={130} height={55} />

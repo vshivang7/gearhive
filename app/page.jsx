@@ -227,7 +227,7 @@ export default function Home() {
       </div>
 
       {/* Hero Section with Gradient Title */}
-      <section ref={heroRef} className="relative mt-8 md:py-8 min-h-screen flex items-center">
+      <section ref={heroRef} className="relative mt-16 md:py-8 min-h-screen flex items-center">
         <div className="max-w-4xl mx-auto text-center relative z-10 px-4">
           <div className="mb-8">
             <div className="flex justify-center mb-6">
