@@ -87,24 +87,40 @@ const AIThinkingAnimation = ({ show }) => {
   );
 };
 
-const Button = ({ children, variant = "default", size = "default", className = "", onClick, ...props }) => {
-  const baseClasses = "inline-flex items-center justify-center rounded-lg font-bold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2";
+const Button = ({
+  children,
+  variant = "default",
+  size = "default",
+  className = "",
+  onClick,
+  asChild = false,
+  ...props
+}) => {
+  const baseClasses =
+    "inline-flex items-center justify-center rounded-lg font-bold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2";
   const variants = {
-    default: "bg-gradient-to-r from-orange-500 to-amber-600 text-white hover:scale-105 shadow-lg hover:shadow-orange-500/40",
-    ghost: "bg-transparent text-orange-700 hover:text-orange-600 hover:bg-orange-50",
-    outline: "bg-white border border-orange-300 text-orange-700 hover:bg-orange-50"
+    default:
+      "bg-gradient-to-r from-orange-500 to-amber-600 text-white hover:scale-105 shadow-lg hover:shadow-orange-500/40",
+    ghost:
+      "bg-transparent text-orange-700 hover:text-orange-600 hover:bg-orange-50",
+    outline: "bg-white border border-orange-300 text-orange-700 hover:bg-orange-50",
   };
   const sizes = {
     default: "px-5 py-2.5 text-base",
-    lg: "px-8 py-4 text-lg"
+    lg: "px-8 py-4 text-lg",
   };
 
+  const classes = `${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`;
+
+  if (asChild && React.isValidElement(children)) {
+    return React.cloneElement(children, {
+      className: `${classes} ${children.props.className || ""}`,
+      ...props,
+    });
+  }
+
   return (
-    <button 
-      className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`}
-      onClick={onClick}
-      {...props}
-    >
+    <button className={classes} onClick={onClick} {...props}>
       {children}
     </button>
   );
@@ -160,7 +176,7 @@ export default function Home() {
 
 
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-amber-100 via-white to-amber-50 text-gray-800 overflow-hidden relative">
+    <div className="pt-16 md:pt-0 flex flex-col min-h-screen bg-gradient-to-br from-amber-50 via-white to-amber-50 text-gray-800 overflow-hidden relative">
       {/* Neural Network Background */}
       <NeuralNetwork />
       
@@ -176,16 +192,16 @@ export default function Home() {
       </div>
 
       {/* Hero Section with Gradient Title */}
-      <section className="relative py-16 md:py-32 min-h-screen flex items-center">
+      <section className="relative py-4 md:py-8 min-h-screen flex items-center">
         <div className="max-w-4xl mx-auto text-center relative z-10 px-4">
-          <div className="mb-8">
+          <div className="mb-2">
             <div className="flex justify-center mb-6">
               <div className="bg-gradient-to-r from-orange-500 to-amber-600 p-4 rounded-full animate-pulse shadow-lg">
                 <Brain className="w-12 h-12 text-white" />
               </div>
             </div>
             
-            <h1 className="text-5xl md:text-8xl mb-6 bg-gradient-to-r from-orange-700 via-amber-600 to-orange-700 bg-clip-text text-transparent animate-pulse font-extrabold">
+            <h1 className="text-5xl md:text-6xl mb-6 bg-gradient-to-r from-orange-700 via-amber-600 to-orange-700 bg-clip-text text-transparent font-extrabold">
               Find your Dream Car with GearHive AI
             </h1>
             
@@ -210,7 +226,7 @@ export default function Home() {
             </div>
 
             {/* Enhanced Search Component with Glassmorphism */}
-            <div className="max-w-2xl mx-auto mb-8">
+            <div className="max-w-2xl mx-auto">
               <div className="bg-white/95 backdrop-blur-md border border-orange-200 rounded-2xl p-6 shadow-xl">
                 <HomeSearch onSearching={setIsSearching} />
                 <AIThinkingAnimation show={isSearching} />
@@ -221,7 +237,7 @@ export default function Home() {
       </section>
 
       {/* AI Features Section */}
-      <section className="py-2">
+      <section className="py-4">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-extrabold text-center mb-16 bg-gradient-to-r from-orange-700 to-amber-600 bg-clip-text text-transparent">
             AI-Powered Features
@@ -249,7 +265,7 @@ export default function Home() {
       </section>
 
   {/* Featured Cars */}
-      <section className="py-25">
+      <section className="pt-12 pb-8">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-extrabold bg-gradient-to-r from-orange-700 to-amber-600 bg-clip-text text-transparent">
@@ -267,15 +283,14 @@ export default function Home() {
         </div>
       </section>
 
-<section className="py-16 overflow-hidden">
+<section className="py-8 overflow-hidden">
   <div className="container mx-auto px-4">
     <div className="flex justify-between items-center mb-8">
       <h2 className="text-3xl font-extrabold bg-gradient-to-r from-orange-700 to-amber-600 bg-clip-text text-transparent">
         Browse by Make
       </h2>
       <Button variant="ghost" className="flex items-center" asChild>
-        <Link href="/cars"> View All<ChevronRight className="ml-1 h-4 w-4" />
-        </Link>
+        <Link href="/cars"> View All<ChevronRight className="ml-1 h-4 w-4" /></Link>
       </Button>
     </div>
 
@@ -309,7 +324,7 @@ export default function Home() {
 
 
      {/* Why Choose Us */}
-      <section className="py-16">
+      <section className="py-8">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-extrabold text-center mb-12 bg-gradient-to-r from-orange-700 to-amber-600 bg-clip-text text-transparent">
             Why Choose Our AI Platform
@@ -347,7 +362,7 @@ export default function Home() {
       </section>
 
       {/* Browse by Body Type */}
-      <section className="py-12">
+      <section className="py-8 pb-12">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-extrabold bg-gradient-to-r from-orange-700 to-amber-600 bg-clip-text text-transparent">
@@ -380,7 +395,7 @@ export default function Home() {
       </section>
 
       {/* FAQ Section with Accordion */}
-      <section className="py-12">
+      <section className="py-8">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-extrabold text-center mb-8 bg-gradient-to-r from-orange-700 to-amber-600 bg-clip-text text-transparent">
             AI Assistant - Frequently Asked Questions
@@ -407,7 +422,7 @@ export default function Home() {
 
 
       {/* CTA Section */}
-      <section className="py-16 relative">
+      <section className="py-8 relative">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-extrabold mb-6 bg-gradient-to-r from-orange-700 to-amber-600 bg-clip-text text-transparent">
             Ready to Find Your Dream Car?
@@ -430,9 +445,9 @@ export default function Home() {
 
 
       {/* Futuristic Footer */}
-<footer className="bg-gradient-to-br from-amber-50 to-white text-gray-900 py-12 mt-16 border-t border-orange-200 relative overflow-hidden">
+<footer className="bg-gradient-to-br from-amber-50 to-white text-gray-900 py-4 mt-16 border-t border-orange-200 relative overflow-hidden">
   {/* Glow Bar */}
-  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-3/4 h-1 bg-gradient-to-r from-orange-500 via-amber-600 to-orange-500 blur-md animate-pulse" />
+  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-3/4 h-1 bg-gradient-to-r from-orange-200 via-amber-400 to-orange-200 blur-md animate-pulse" />
 
   <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 relative z-10">
     {/* Brand */}
@@ -478,7 +493,7 @@ export default function Home() {
     </div>
   </div>
 
-  <div className="text-center text-sm text-gray-700 mt-10 z-10 relative font-medium">
+  <div className="text-center text-sm text-gray-700 mt-4 z-10 relative font-medium">
     © {new Date().getFullYear()} GearHive AI. All rights reserved. 🚀
   </div>
 </footer>
