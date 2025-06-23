@@ -16,7 +16,7 @@ const Header = async ({ isAdminPage = false }) => {
   const isAdmin = user?.role === "ADMIN";
 
   return (
-    <header className="fixed top-0 left-0 w-full z-30 bg-gradient-to-br from-purple-100/10 to-purple-100/30 backdrop-blur-md border-b border-white/30 shadow-lg">
+<header className="top-0 left-0 w-full z-30 bg-gradient-to-br from-[#0f0c29]/60 via-[#302b63]/60 to-[#24243e]/60 backdrop-blur-xl border-b border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.6)] transition-all duration-500 ease-in-out hover:shadow-[0_8px_40px_rgba(100,0,255,0.4)]">
       <nav className="max-w-[150rem] mx-auto px-6 sm:px-10 py-5 flex justify-between items-center">
         {/* Logo */}
         <Link

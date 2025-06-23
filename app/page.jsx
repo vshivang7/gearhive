@@ -166,7 +166,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col pt-20 min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden relative">
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden relative">
       {/* Neural Network Background */}
       <NeuralNetwork />
       
@@ -184,7 +184,7 @@ export default function Home() {
       {/* Hero Section with Gradient Title */}
       <section className="relative py-16 md:py-32 min-h-screen flex items-center">
         <div className="max-w-4xl mx-auto text-center relative z-10 px-4">
-          <div className="mb-12">
+          <div className="mb-8">
             <div className="flex justify-center mb-6">
               <div className="bg-gradient-to-r from-cyan-500 to-purple-500 p-4 rounded-full animate-pulse">
                 <Brain className="w-12 h-12 text-white" />
@@ -227,7 +227,7 @@ export default function Home() {
       </section>
 
       {/* AI Features Section */}
-      <section className="relative">
+      <section className="py-2">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
             AI-Powered Features
@@ -255,7 +255,7 @@ export default function Home() {
       </section>
 
   {/* Featured Cars */}
-      <section className="py-12">
+      <section className="py-25">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold text-white">AI-Verified Featured Cars</h2>
