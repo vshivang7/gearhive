@@ -100,7 +100,7 @@ export const CarCard = ({ car }) => {
           <h3 className="text-lg font-bold line-clamp-1">
             {car.make} {car.model}
           </h3>
-          <span className="text-xl font-bold text-blue-600">
+          <span className="text-xl font-bold text-orange-600">
             ${car.price.toLocaleString()}
           </span>
         </div>
@@ -127,7 +127,7 @@ export const CarCard = ({ car }) => {
 
         <div className="flex justify-between">
           <Button
-            className="flex-1"
+            className="flex-1 bg-orange-900 hover:bg-amber-700"
             onClick={() => {
               router.push(`/cars/${car.id}`);
             }}

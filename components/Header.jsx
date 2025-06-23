@@ -16,7 +16,7 @@ const Header = async ({ isAdminPage = false }) => {
   const isAdmin = user?.role === "ADMIN";
 
   return (
-<header className="top-0 left-0 w-full z-30 bg-gradient-to-br from-[#0f0c29]/60 via-[#302b63]/60 to-[#24243e]/60 backdrop-blur-xl border-b border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.6)] transition-all duration-500 ease-in-out hover:shadow-[0_8px_40px_rgba(100,0,255,0.4)]">
+    <header className="top-0 left-0 w-full z-30 bg-gradient-to-br from-amber-500/70 via-orange-700/70 to-amber-950/70 backdrop-blur-xl border-b border-orange-400/20 shadow-[0_8px_30px_rgba(0,0,0,0.6)] transition-all duration-500 ease-in-out hover:shadow-[0_8px_40px_rgba(255,100,0,0.5)]">
       <nav className="max-w-[150rem] mx-auto px-6 sm:px-10 py-5 flex justify-between items-center">
         {/* Logo */}
         <Link
@@ -31,7 +31,7 @@ const Header = async ({ isAdminPage = false }) => {
             className="transition-transform duration-300 group-hover:scale-105 drop-shadow-md"
           />
           {isAdminPage && (
-            <span className="text-sm uppercase text-cyan-600 font-semibold tracking-widest">
+            <span className="text-sm uppercase text-amber-400 font-semibold tracking-widest">
               Admin
             </span>
           )}
@@ -43,7 +43,7 @@ const Header = async ({ isAdminPage = false }) => {
             <Link href="/">
               <Button
                 variant="ghost"
-                className="bg-white/30 text-slate-900 hover:bg-cyan-100/50 border border-white/30 shadow-sm"
+                className="bg-orange-400/20 text-amber-50 hover:bg-amber-500/30 border border-orange-400/30 shadow-sm"
               >
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 <span className="hidden sm:inline">Back to App</span>
@@ -52,7 +52,7 @@ const Header = async ({ isAdminPage = false }) => {
           ) : (
             <SignedIn>
               <Link href="/saved-cars">
-                <Button className="bg-gradient-to-r from-cyan-400 to-purple-400 text-white hover:scale-105 transition-transform shadow-lg">
+                <Button className="bg-gradient-to-r from-amber-500 to-orange-600 text-white hover:scale-105 transition-transform shadow-lg hover:shadow-orange-500/30">
                   <CarFront className="mr-2 h-4 w-4" />
                   <span className="hidden sm:inline">Saved Cars</span>
                 </Button>
@@ -62,7 +62,7 @@ const Header = async ({ isAdminPage = false }) => {
                 <Link href="/admin">
                   <Button
                     variant="ghost"
-                    className="text-slate-900 bg-white/30 border border-white/30 hover:bg-white/50 shadow-sm"
+                    className="text-amber-50 bg-orange-400/20 border border-orange-400/30 hover:bg-amber-500/30 shadow-sm"
                   >
                     <Layout className="mr-2 h-4 w-4" />
                     <span className="hidden sm:inline">Admin Portal</span>
@@ -72,7 +72,7 @@ const Header = async ({ isAdminPage = false }) => {
                 <Link href="/reservations">
                   <Button
                     variant="ghost"
-                    className="text-slate-900 bg-white/30 border border-white/30 hover:bg-white/50 shadow-sm"
+                    className="text-amber-50 bg-orange-400/20 border border-orange-400/30 hover:bg-amber-500/30 shadow-sm"
                   >
                     <Heart className="mr-2 h-4 w-4" />
                     <span className="hidden sm:inline">My Reservations</span>
@@ -86,7 +86,7 @@ const Header = async ({ isAdminPage = false }) => {
             <SignInButton>
               <Button
                 variant="ghost"
-                className="text-slate-900 bg-white/30 border border-white/30 hover:bg-white/50 shadow-sm"
+                className="text-amber-50 bg-orange-400/20 border border-orange-400/30 hover:bg-amber-500/30 shadow-sm"
               >
                 Login
               </Button>
@@ -99,7 +99,7 @@ const Header = async ({ isAdminPage = false }) => {
               appearance={{
                 elements: {
                   avatarBox:
-                    "w-10 h-10 ring-2 ring-purple-400 rounded-full transition-transform hover:scale-110",
+                    "w-10 h-10 ring-2 ring-amber-400 rounded-full transition-transform hover:scale-110",
                 },
               }}
             />
