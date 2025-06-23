@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@arcjet/inspect": "^1.0.0-beta.8",
@@ -53,6 +54,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.2.3",
     "prisma": "^6.9.0",
-    "tailwindcss": "^4.1.8"
+    "tailwindcss": "^4.1.8",
+    "typescript": "^5.8.3"
   }
 }

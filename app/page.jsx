@@ -227,7 +227,7 @@ export default function Home() {
       </div>
 
       {/* Hero Section with Gradient Title */}
-      <section ref={heroRef} className="relative mt-16 md:py-8 min-h-screen flex items-center">
+      <section ref={heroRef} className="relative mt-8 md:py-8 min-h-screen flex items-center">
         <div className="max-w-4xl mx-auto text-center relative z-10 px-4">
           <div className="mb-8">
             <div className="flex justify-center mb-6">
@@ -236,7 +236,7 @@ export default function Home() {
               </div>
             </div>
             
-            <h1 className="text-5xl md:text-6xl mb-6 bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent font-extrabold">
+            <h1 className="text-6xl md:text-7xl mb-6 bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent font-extrabold">
               Find your Dream Car with GearHive AI
             </h1>
             
@@ -494,10 +494,10 @@ export default function Home() {
           <div>
             <h4 className="text-gray-900 font-bold text-lg mb-4">Support</h4>
             <ul className="space-y-2 text-gray-700 text-sm font-medium">
-              <li><Link href="/faq" className="hover:text-blue-600 transition">FAQs</Link></li>
-              <li><Link href="/contact" className="hover:text-blue-600 transition">Contact Us</Link></li>
-              <li><Link href="/privacy" className="hover:text-blue-600 transition">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="hover:text-blue-600 transition">Terms & Conditions</Link></li>
+              <li><Link href="/" className="hover:text-blue-600 transition">FAQs</Link></li>
+              <li><Link href="/" className="hover:text-blue-600 transition">Contact Us</Link></li>
+              <li><Link href="/" className="hover:text-blue-600 transition">Privacy Policy</Link></li>
+              <li><Link href="/" className="hover:text-blue-600 transition">Terms & Conditions</Link></li>
             </ul>
           </div>
 
