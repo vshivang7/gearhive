@@ -15,10 +15,10 @@ const FloatingParticles = () => {
 
   useEffect(() => {
     const arr = [...Array(30)].map(() => ({
-      left: ${Math.random() * 100}%,
-      top: ${Math.random() * 100}%,
-      delay: ${Math.random() * 3}s,
-      duration: ${2 + Math.random() * 2}s,
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      delay: `${Math.random() * 3}s`,
+      duration: `${2 + Math.random() * 2}s`,
     }));
     setParticles(arr);
   }, []);
@@ -47,17 +47,17 @@ const NeuralNetwork = () => (
       {[...Array(8)].map((_, i) => (
         <g key={i}>
           <circle
-            cx={${20 + i * 10}%}
-            cy={${30 + Math.sin(i) * 20}%}
+            cx={`${20 + i * 10}%`}
+            cy={`${30 + Math.sin(i) * 20}%`}
             r="2"
             fill="#3b82f6"
             className="animate-pulse"
           />
           <line
-            x1={${20 + i * 10}%}
-            y1={${30 + Math.sin(i) * 20}%}
-            x2={${20 + (i + 1) * 10}%}
-            y2={${30 + Math.sin(i + 1) * 20}%}
+            x1={`${20 + i * 10}%`}
+            y1={`${30 + Math.sin(i) * 20}%`}
+            x2={`${20 + (i + 1) * 10}%`}
+            y2={`${30 + Math.sin(i + 1) * 20}%`}
             stroke="#3b82f6"
             strokeWidth="0.5"
             opacity="0.4"
@@ -95,7 +95,7 @@ const AIThinkingAnimation = ({ show }) => {
           <div
             key={i}
             className="w-2 h-2 bg-blue-500 rounded-full animate-bounce"
-            style={{ animationDelay: ${i * 0.2}s }}
+            style={{ animationDelay: `${i * 0.2}s` }}
           />
         ))}
       </div>
@@ -127,11 +127,11 @@ const Button = ({
     lg: "px-8 py-4 text-lg",
   };
 
-  const classes = ${baseClasses} ${variants[variant]} ${sizes[size]} ${className};
+  const classes = `${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`;
 
   if (asChild && React.isValidElement(children)) {
     return React.cloneElement(children, {
-      className: ${classes} ${children.props.className || ""},
+      className: `${classes} ${children.props.className || ""}`,
       ...props,
     });
   }
@@ -166,19 +166,19 @@ const AccordionItem = ({ children, value, className = "" }) => {
 const AccordionTrigger = ({ children, className = "", isOpen, setIsOpen }) => {
   return (
     <button
-      className={${className} w-full text-left py-4 flex items-center justify-between text-gray-900 font-bold hover:text-blue-700}
+      className={`${className} w-full text-left py-4 flex items-center justify-between text-gray-900 font-bold hover:text-blue-700`}
       onClick={() => setIsOpen(!isOpen)}
     >
       {children}
-      <ChevronDown className={w-5 h-5 transition-transform ${isOpen ? 'rotate-180' : ''}} />
+      <ChevronDown className={`w-5 h-5 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
     </button>
   );
 };
 
 const AccordionContent = ({ children, className = "", isOpen }) => {
   return (
-    <div className={overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 pb-4' : 'max-h-0'}}>
-      <div className={text-gray-800 ${className}}>{children}</div>
+    <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 pb-4' : 'max-h-0'}`}>
+      <div className={`text-gray-800 ${className}`}>{children}</div>
     </div>
   );
 };
@@ -335,14 +335,14 @@ export default function Home() {
             <div className="flex w-[200%] animate-scroll">
               {[...carMakes, ...carMakes].map((make, idx) => (
                 <div
-                  key={${make.name}-${idx}}
+                  key={`${make.name}-${idx}`}
                   className="min-w-[240px] px-8 flex-shrink-0"
                 >
-                  <Link href={/cars?make=${make.name}} className="group block">
+                  <Link href={`/cars?make=${make.name}`} className="group block">
                     <div className="bg-white rounded-2xl p-4 text-center hover:scale-110 transform transition-all duration-300 hover:shadow-lg hover:shadow-green-300/30 border border-blue-100">
                       <div className="h-16 w-auto mx-auto mb-2 relative">
                         <Image
-                          src={make.imageUrl || /make/${make.name.toLowerCase()}.webp}
+                          src={make.imageUrl || `/make/${make.name.toLowerCase()}.webp`}
                           alt={make.name}
                           fill
                           style={{ objectFit: "contain" }}
@@ -426,7 +426,7 @@ export default function Home() {
           <div className="max-w-3xl mx-auto">
             <Accordion type="single" collapsible className="w-full space-y-4">
               {faqItems.map((faq, index) => (
-                <AccordionItem key={index} value={item-${index}} className="bg-white backdrop-blur-lg border border-blue-100 rounded-2xl px-6">
+                <AccordionItem key={index} value={`item-${index}`} className="bg-white backdrop-blur-lg border border-blue-100 rounded-2xl px-6">
                   <AccordionTrigger className="text-gray-900 hover:text-blue-700 flex items-center gap-4">
                     <div className="bg-gradient-to-r from-blue-500 to-green-500 w-8 h-8 rounded-full flex items-center justify-center shrink-0 shadow-sm">
                       <Bot className="w-4 h-4 text-white" />
