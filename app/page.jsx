@@ -227,7 +227,7 @@ export default function Home() {
       </div>
 
       {/* Hero Section with Gradient Title */}
-      <section ref={heroRef} className="relative mt-16 md:py-8 min-h-screen flex items-center">
+      <section ref={heroRef} className="relative mt-24 md:py-8 min-h-screen flex items-center">
         <div className="max-w-4xl mx-auto text-center relative z-10 px-4">
           <div className="mb-8">
             <div className="flex justify-center mb-6">
@@ -236,7 +236,7 @@ export default function Home() {
               </div>
             </div>
             
-            <h1 className="text-6xl md:text-7xl mb-6 bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent font-extrabold">
+            <h1 className="text-5xl md:text-6xl mb-6 bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent font-extrabold">
               Find your Dream Car with GearHive AI
             </h1>
             
