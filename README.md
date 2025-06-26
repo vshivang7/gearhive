@@ -1,6 +1,6 @@
 # GearHive AI
 
-Live Demo →[gearhive-one.vercel.app](https://gearhive-one.vercel.app/)
+Live Demo → [gearhive-one.vercel.app](https://gearhive-one.vercel.app/)
 
 GearHive AI is a simple and modern website that helps you find your perfect car using AI.
 
@@ -10,7 +10,7 @@ GearHive AI is a simple and modern website that helps you find your perfect car 
 
 ### For Users
 
-- **AI-powered car search** to quickly find vehicles that match your preferences
+- **AI-powered car search** to quickly find vehicles using image analysis
 - **Browse by make or body type** with interactive carousels and grids
 - **Wishlist cars** to save your favourite cars
 - **Book Test Drives** to test favourite cars
