@@ -108,6 +108,10 @@ export function CarDetails({ car, testDriveInfo }) {
     router.push(`/test-drive/${car.id}`);
   };
 
+  const formatNumber = (num) => {
+    return new Intl.NumberFormat("en-IN").format(num);
+  };
+
   return (
     <div>
       <div className="flex flex-col lg:flex-row gap-8">
@@ -199,7 +203,7 @@ export function CarDetails({ car, testDriveInfo }) {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 my-6">
             <div className="flex items-center gap-2">
               <Gauge className="text-gray-500 h-5 w-5" />
-              <span>{car.mileage.toLocaleString()} miles</span>
+              <span>{formatNumber(car.mileage)} miles</span>
             </div>
             <div className="flex items-center gap-2">
               <Fuel className="text-gray-500 h-5 w-5" />
@@ -358,7 +362,7 @@ export function CarDetails({ car, testDriveInfo }) {
             <div className="flex justify-between py-2 border-b">
               <span className="text-gray-600">Mileage</span>
               <span className="font-medium">
-                {car.mileage.toLocaleString()} miles
+                {formatNumber(car.mileage)} miles
               </span>
             </div>
             <div className="flex justify-between py-2 border-b">

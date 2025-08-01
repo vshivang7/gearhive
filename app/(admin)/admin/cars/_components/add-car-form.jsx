@@ -364,11 +364,11 @@ export const AddCarForm = () => {
 
                   {/* Price */}
                   <div className="space-y-2">
-                    <Label htmlFor="price">Price ($)</Label>
+                    <Label htmlFor="price">Price (₹)</Label>
                     <Input
                       id="price"
                       {...register("price")}
-                      placeholder="e.g. 25000"
+                      placeholder="e.g. 2500000"
                       className={errors.price ? "border-red-500" : ""}
                     />
                     {errors.price && (
@@ -384,7 +384,7 @@ export const AddCarForm = () => {
                     <Input
                       id="mileage"
                       {...register("mileage")}
-                      placeholder="e.g. 15000"
+                      placeholder="e.g. 2000"
                       className={errors.mileage ? "border-red-500" : ""}
                     />
                     {errors.mileage && (

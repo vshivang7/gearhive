@@ -55,9 +55,9 @@ model Car {
 model DealershipInfo {
   id           String        @id @default(uuid())
   name         String        @default("GearHive Motors")
-  address      String        @default("69 Car Street, Autoville, CA 69420")
-  phone        String        @default("+1 (555) 123-4567")
-  email        String        @default("contact@GearHive.com")
+  address      String        @default("Civil Lines, Prayagraj 211001")
+  phone        String        @default("+91 7307476236")
+  email        String        @default("contact@gearhive.com")
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
   workingHours WorkingHour[]

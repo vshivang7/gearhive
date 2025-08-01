@@ -283,7 +283,7 @@ export const CarFilters = ({ filters }) => {
           </div>
 
           <div className="px-4 py-4 border-t">
-            <Button onClick={applyFilters} className="w-full">
+            <Button onClick={applyFilters} className=" cursor-pointer w-full">
               Apply Filters
             </Button>
           </div>

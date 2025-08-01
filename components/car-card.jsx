@@ -26,6 +26,10 @@ export const CarCard = ({ car }) => {
     error: toggleError,
   } = useFetch(toggleSavedCar);
 
+  const formatNumber = (num) => {
+    return new Intl.NumberFormat("en-IN").format(num);
+  };
+
   // Handle toggle result with useEffect
   useEffect(() => {
     if (toggleResult?.success && toggleResult.saved !== isSaved) {
@@ -57,6 +61,7 @@ export const CarCard = ({ car }) => {
     // Call the toggleSavedCar function using our useFetch hook
     await toggleSavedCarFn(car.id);
   };
+  
 
   return (
     <Card className="overflow-hidden hover:shadow-lg transition group py-0">
@@ -101,7 +106,7 @@ export const CarCard = ({ car }) => {
             {car.make} {car.model}
           </h3>
           <span className="text-xl font-bold text-blue-600">
-            ${car.price.toLocaleString()}
+            ₹{formatNumber(car.price)}
           </span>
         </div>
 
@@ -118,7 +123,7 @@ export const CarCard = ({ car }) => {
             {car.bodyType}
           </Badge>
           <Badge variant="outline" className="bg-gray-50">
-            {car.mileage.toLocaleString()} miles
+            {formatNumber(car.mileage)} miles
           </Badge>
           <Badge variant="outline" className="bg-gray-50">
             {car.color}

@@ -3,6 +3,7 @@
 import { Check, X } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { Badge } from "@/components/ui/badge";
+import { formatCurrency } from "@/lib/helpers";
 
 export const CarFilterControls = ({
   filters,
@@ -61,8 +62,8 @@ export const CarFilterControls = ({
           />
         </div>
         <div className="flex items-center justify-between">
-          <div className="font-medium text-sm">$ {priceRange[0]}</div>
-          <div className="font-medium text-sm">$ {priceRange[1]}</div>
+          <div className="font-medium text-sm">{formatCurrency(priceRange[0])}</div>
+          <div className="font-medium text-sm">{formatCurrency(priceRange[1])}</div>
         </div>
       </div>
 

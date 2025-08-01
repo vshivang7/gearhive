@@ -50,7 +50,7 @@ export async function processCarImageWithAI(file) {
       6. Mileage
       7. Fuel type (your best guess)
       8. Transmission type (your best guess)
-      9. Price (your best guess)
+      9. Price in Indian Rupees (your best guess)
       9. Short Description as to be added to a car listing
 
       Format your response as a clean JSON object with these fields:

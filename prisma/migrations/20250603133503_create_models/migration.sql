@@ -52,7 +52,7 @@ CREATE TABLE "Car" (
 CREATE TABLE "DealershipInfo" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL DEFAULT 'GearHive Motors',
-    "address" TEXT NOT NULL DEFAULT '69 Car Street, Autoville, CA 69420',
+    "address" TEXT NOT NULL DEFAULT 'Civil Lines, Prayagraj 211001',
     "phone" TEXT NOT NULL DEFAULT '+1 (555) 123-4567',
     "email" TEXT NOT NULL DEFAULT 'contact@GearHive.com',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
