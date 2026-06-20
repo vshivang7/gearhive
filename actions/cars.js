@@ -26,7 +26,7 @@ export async function processCarImageWithAI(file) {
 
     // Initialize Gemini API
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash" });
 
     // Convert image file to base64
     const base64Image = await fileToBase64(file);
@@ -41,35 +41,48 @@ export async function processCarImageWithAI(file) {
 
     // Define the prompt for car detail extraction
     const prompt = `
-      Analyze this car image and extract the following information:
-      1. Make (manufacturer)
-      2. Model
-      3. Year (approximately)
-      4. Color
-      5. Body type (SUV, Sedan, Hatchback, etc.)
-      6. Mileage
-      7. Fuel type (your best guess)
-      8. Transmission type (your best guess)
-      9. Price in Indian Rupees (your best guess)
-      9. Short Description as to be added to a car listing
+    Analyze this car image and extract the following information.
 
-      Format your response as a clean JSON object with these fields:
-      {
-        "make": "",
-        "model": "",
-        "year": 0000,
-        "color": "",
-        "price": "",
-        "mileage": "",
-        "bodyType": "",
-        "fuelType": "",
-        "transmission": "",
-        "description": "",
-        "confidence": 0.0
-      }
+    IMPORTANT TYPE REQUIREMENTS:
 
-      For confidence, provide a value between 0 and 1 representing how confident you are in your overall identification.
-      Only respond with the JSON object, nothing else.
+    - make: string
+    - model: string
+    - year: integer
+    - color: string
+    - price: string (but should be convertible to integer, Indian Rupees only, no symbols, commas, lakh/crore words)
+    - mileage: string (but should be convertible to integer, kilometers only, no units)
+    - bodyType: string
+    - fuelType: string
+    - transmission: string
+    - description: string
+    - confidence: float between 0 and 1
+
+    Return ONLY valid JSON.
+
+    Example:
+
+    {
+      "make": "Tesla",
+      "model": "Model S",
+      "year": 2024,
+      "color": "White",
+      "price": 8500000,
+      "mileage": 12000,
+      "bodyType": "Sedan",
+      "fuelType": "Electric",
+      "transmission": "Automatic",
+      "description": "Premium electric sedan with long range and advanced technology.",
+      "confidence": 0.92
+    }
+
+    Rules:
+    - year must be a number.
+    - price must be a number.
+    - mileage must be a number.
+    - confidence must be a decimal number.
+    - Do NOT include ₹, INR, commas, km, lakh, crore, or any units.
+    - Do NOT wrap JSON in markdown.
+    - Return ONLY the JSON object.
     `;
 
     // Get response from Gemini
@@ -191,7 +204,8 @@ export async function addCar({ carData, images }) {
     if (imageUrls.length === 0) {
       throw new Error("No valid images were uploaded");
     }
-
+    console.log("carData =", carData);
+    console.log("price =", carData.price);
     // Add the car to the database
     const car = await db.car.create({
       data: {
