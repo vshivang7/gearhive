@@ -115,7 +115,7 @@ export function HomeSearch() {
         <div className="relative flex items-center">
           <Search className="absolute left-3 w-5 h-5" />
           <Input
-            type="text"
+            type="text"     
             placeholder="Enter or use AI..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -160,7 +160,7 @@ export function HomeSearch() {
                       setImagePreview("");
                       toast.info("Image removed");
                     }}
-                  >
+                  > 
                     Remove Image
                   </Button>
                 </div>

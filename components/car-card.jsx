@@ -15,7 +15,7 @@ import useFetch from "@/hooks/use-fetch";
 
 export const CarCard = ({ car }) => {
   const { isSignedIn } = useAuth();
-  const router = useRouter();
+  const router = useRouter();  
   const [isSaved, setIsSaved] = useState(car.wishlisted);
 
   // Use the useFetch hook
